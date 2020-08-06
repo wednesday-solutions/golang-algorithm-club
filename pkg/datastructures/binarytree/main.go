@@ -26,6 +26,26 @@ type BinaryTree interface {
 	Count() int64
 }
 
+//Count Get a count of the items in the Binary Tree
+func (node *BinaryNode) Count() int64 {
+	if node == nil {
+		return 0
+	}
+	if node.IsLeaf() {
+		return 1
+	}
+	var leftNodeCount int64 = 0
+	var rightNodeCount int64 = 0
+
+	if node.Left != nil {
+		leftNodeCount = node.Left.Count()
+	}
+	if node.Right != nil {
+		rightNodeCount = node.Right.Count()
+	}
+	return leftNodeCount + 1 + rightNodeCount
+}
+
 //IsLeaf Check if the current node is a leaf node
 func (node *BinaryNode) IsLeaf() bool {
 	return node != nil && node.Left == nil && node.Right == nil
@@ -59,24 +79,4 @@ func (node *BinaryNode) TraverseInOrder(fn func(string)) {
 	node.Left.TraverseInOrder(fn)
 	fn(node.Data)
 	node.Right.TraverseInOrder(fn)
-}
-
-//Count Get a count of the items in the Binary Tree
-func (node *BinaryNode) Count() int64 {
-	if node == nil {
-		return 0
-	}
-	if node.IsLeaf() {
-		return 1
-	}
-	var leftNodeCount int64 = 0
-	var rightNodeCount int64 = 0
-
-	if node.Left != nil {
-		leftNodeCount = node.Left.Count()
-	}
-	if node.Right != nil {
-		rightNodeCount = node.Right.Count()
-	}
-	return leftNodeCount + 1 + rightNodeCount
 }
