@@ -19,9 +19,9 @@ type BinaryNode struct {
 
 //BinaryTree BinaryTree interface
 type BinaryTree interface {
-	TraversePreOrder(func(string), *BinaryNode)
-	TraversePostOrder(func(string), *BinaryNode)
-	TraverseInOrder(func(string), *BinaryNode)
+	TraversePreOrder(func(string))
+	TraversePostOrder(func(string))
+	TraverseInOrder(func(string))
 	IsLeaf() bool
 	Count() int64
 }
