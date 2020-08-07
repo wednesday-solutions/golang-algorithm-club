@@ -1,5 +1,23 @@
 package binarytree
 
+type (
+	//BinaryNode Node in a the Binary Tree
+	BinaryNode struct {
+		BinaryTree
+		Data  string
+		Left  *BinaryNode
+		Right *BinaryNode
+	}
+	//BinaryTree BinaryTree interface
+	BinaryTree interface {
+		TraversePreOrder(func(string))
+		TraversePostOrder(func(string))
+		TraverseInOrder(func(string))
+		IsLeaf() bool
+		Count() int64
+	}
+)
+
 //CreateNode Create a new Node
 func CreateNode(Data string, leftNode *BinaryNode, rightNode *BinaryNode) *BinaryNode {
 	return &BinaryNode{
@@ -7,23 +25,6 @@ func CreateNode(Data string, leftNode *BinaryNode, rightNode *BinaryNode) *Binar
 		Left:  leftNode,
 		Right: rightNode,
 	}
-}
-
-//BinaryNode Node in a the Binary Tree
-type BinaryNode struct {
-	BinaryTree
-	Data  string
-	Left  *BinaryNode
-	Right *BinaryNode
-}
-
-//BinaryTree BinaryTree interface
-type BinaryTree interface {
-	TraversePreOrder(func(string))
-	TraversePostOrder(func(string))
-	TraverseInOrder(func(string))
-	IsLeaf() bool
-	Count() int64
 }
 
 //Count Get a count of the items in the Binary Tree

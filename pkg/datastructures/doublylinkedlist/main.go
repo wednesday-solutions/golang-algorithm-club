@@ -2,36 +2,36 @@ package doublylinkedlist
 
 import "fmt"
 
-//Node Doubly Linked List node
-type Node struct {
-	Value    string
-	Previous *Node
-	Next     *Node
-}
-
-//DoublyLinkedList Doubly Linked List struct
-type DoublyLinkedList struct {
-	DLLInterface
-	Head      *Node
-	Last      *Node
-	Node      *Node
-	Length    int
-	iterating bool
-}
-
-//DLLInterface Interface for Doubly Linked List
-type DLLInterface interface {
-	Append(value string) (*Node, error)
-	Count() int
-	Insert(value string, index int) (*Node, error)
-	Next() (*Node, bool)
-	NodeAt(index int) (*Node, error)
-	Remove(index int) (string, error)
-	RemoveAll()
-	RemoveLast() (string, error)
-	Reverse() *DoublyLinkedList
-	ToArray() ([]string, error)
-}
+type (
+	//Node Doubly Linked List node
+	Node struct {
+		Value    string
+		Previous *Node
+		Next     *Node
+	}
+	//DoublyLinkedList Doubly Linked List struct
+	DoublyLinkedList struct {
+		DLLInterface
+		Head      *Node
+		Last      *Node
+		Node      *Node
+		Length    int
+		iterating bool
+	}
+	//DLLInterface Interface for Doubly Linked List
+	DLLInterface interface {
+		Append(value string) (*Node, error)
+		Count() int
+		Insert(value string, index int) (*Node, error)
+		Next() (*Node, bool)
+		NodeAt(index int) (*Node, error)
+		Remove(index int) (string, error)
+		RemoveAll()
+		RemoveLast() (string, error)
+		Reverse() *DoublyLinkedList
+		ToArray() ([]string, error)
+	}
+)
 
 func createDoublyLinkedListNode(value string) *Node {
 	return &Node{

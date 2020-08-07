@@ -1,14 +1,15 @@
 package stack
 
-//Stack ...
-type Stack []string
-
-//Impl Stack Interface
-type Impl interface {
-	Peek() string
-	Pop() string
-	Push(value string)
-}
+type (
+	//Stack ...
+	Stack []string
+	//Impl Stack Interface
+	Impl interface {
+		Peek() string
+		Pop() string
+		Push(value string)
+	}
+)
 
 //NewStack create a new stack
 func NewStack() Stack {

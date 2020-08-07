@@ -48,6 +48,15 @@ func TestStack_Peek(t *testing.T) {
 	}
 }
 
+func TestQueue_PeekEmpty(t *testing.T) {
+	stack = NewStack()
+	peekedElement := stack.Peek()
+	if peekedElement != "" {
+		t.Errorf("for an empty stack Peek should return \"\"")
+	}
+
+}
+
 func TestStack_Pop(t *testing.T) {
 	element := "1"
 	stack.Push(element)
@@ -58,5 +67,13 @@ func TestStack_Pop(t *testing.T) {
 	}
 	if previousLength != len(stack)+1 {
 		t.Errorf("Pop should remove the last element from the stack")
+	}
+}
+
+func TestQueue_PopEmpty(t *testing.T) {
+	stack = NewStack()
+	peekedElement := stack.Pop()
+	if peekedElement != "" {
+		t.Errorf("for an empty stack Pop should return \"\"")
 	}
 }
