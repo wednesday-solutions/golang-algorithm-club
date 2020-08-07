@@ -1,7 +1,7 @@
 package doublylinkedlist
 
 import (
-	"os"
+	"github.com/wednesday-solutions/golang-algorithm-club/pkg/utl"
 	"testing"
 )
 
@@ -16,10 +16,7 @@ func createDoublyLinkedList() {
 	_, _ = doublyLinkedList.Insert("3", 1)
 }
 func TestMain(m *testing.M) {
-	createDoublyLinkedList()
-	code := m.Run()
-	os.Exit(code)
-
+	utl.SetupTests(m, createDoublyLinkedList)
 }
 
 func TestCreateDoublyLinkedList(t *testing.T) {

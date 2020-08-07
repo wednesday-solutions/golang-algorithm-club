@@ -1,7 +1,7 @@
 package binarytree
 
 import (
-	"os"
+	"github.com/wednesday-solutions/golang-algorithm-club/pkg/utl"
 	"strings"
 	"testing"
 )
@@ -9,9 +9,7 @@ import (
 var binaryTree *BinaryNode
 
 func TestMain(m *testing.M) {
-	createBinaryTree()
-	code := m.Run()
-	os.Exit(code)
+	utl.SetupTests(m, createBinaryTree)
 }
 func createBinaryTree() {
 	node5 := CreateNode("5", nil, nil)
