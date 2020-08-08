@@ -5,12 +5,12 @@ import (
 )
 
 type (
-	//Node Doubly Linked List node
+	//Node Linked List node
 	Node struct {
 		Value string
 		Next  *Node
 	}
-	//LinkedList Doubly Linked List struct
+	//LinkedList Linked List struct
 	LinkedList struct {
 		LLInterface
 		Head      *Node
@@ -18,7 +18,7 @@ type (
 		Length    int
 		iterating bool
 	}
-	//LLInterface Interface for Doubly Linked List
+	//LLInterface Interface for Linked List
 	LLInterface interface {
 		Append(value string) (*Node, error)
 		Count() int
@@ -96,7 +96,7 @@ func (linkedList *LinkedList) removeNode(node *Node) (*Node, error) {
 	return node, nil
 }
 
-//CreateLinkedList Create a new Doubly Linked List
+//CreateLinkedList Create a new Linked List
 func CreateLinkedList(value string) *LinkedList {
 	node := createLinkedListNode(value)
 	return &LinkedList{
@@ -106,7 +106,7 @@ func CreateLinkedList(value string) *LinkedList {
 	}
 }
 
-//CreateLinkedListFromArray Create a new Doubly Linked List
+//CreateLinkedListFromArray Create a new Linked List from an array
 func CreateLinkedListFromArray(values []string) *LinkedList {
 	if len(values) > 0 {
 		linkedList := CreateLinkedList(values[0])
@@ -118,7 +118,7 @@ func CreateLinkedListFromArray(values []string) *LinkedList {
 	return nil
 }
 
-//Next Used to iterate over the Doubly Linked List
+//Next Used to iterate over the Linked List
 func (linkedList *LinkedList) Next() (*Node, bool) {
 	if !linkedList.iterating {
 		linkedList.iterating = true
@@ -134,7 +134,7 @@ func (linkedList *LinkedList) Next() (*Node, bool) {
 	return nil, linkedList.iterating
 }
 
-//Count Get the total number of elements in the Doubly Linked List
+//Count Get the total number of elements in the Linked List
 func (linkedList *LinkedList) Count() int {
 	if linkedList.Head == nil || linkedList.GetLast() == nil || linkedList.Length == 0 {
 		return 0
@@ -209,7 +209,7 @@ func (linkedList *LinkedList) Reverse() *LinkedList {
 	return linkedList
 }
 
-//ToArray Convert the Doubly Linked List to an array
+//ToArray Convert the Linked List to an array
 func (linkedList *LinkedList) ToArray() ([]string, error) {
 	if linkedList.Head == nil || linkedList.Length == 0 {
 		return nil, fmt.Errorf("no data to create array")

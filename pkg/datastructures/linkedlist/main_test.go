@@ -192,7 +192,7 @@ func TestLinkedList_Reverse(t *testing.T) {
 	linkedListListReversedArr, _ := linkedList.ToArray()
 	for i := 0; i < linkedList.Length; i++ {
 		if linkedListListArr[i] != linkedListListReversedArr[linkedList.Length-1-i] {
-			t.Errorf("the doubly linked list has incorrect values at index: %d after reversal", i)
+			t.Errorf("the linked list has incorrect values at index: %d after reversal", i)
 		}
 	}
 
