@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package BinaryHeap
 
 type HeapConditions struct {
 	heapType string
@@ -28,7 +24,7 @@ func childCheck(index int, largestItemIndex int, array * []int) bool{
 	return false
 }
 
-func maxHeapify(array *[]int, nodeIndex int, totalItems int) {
+func heapify(array *[]int, nodeIndex int) {
 	leftChildIndex := 2*nodeIndex + 1
 	rightChildIndex := 2*nodeIndex + 2
 	largest := nodeIndex
@@ -42,19 +38,14 @@ func maxHeapify(array *[]int, nodeIndex int, totalItems int) {
 
 	if largest != nodeIndex {
 		swap (largest, nodeIndex, array)
-		maxHeapify(array, largest, totalItems)
+		heapify(array, largest)
 	}
 }
 
-func createBinaryHeap(array *[]int, n int) {
-	CreateHeap = HeapConditions {"MIN", n}
+func createBinaryHeap(array []int, n int, heapType string) *[]int {
+	CreateHeap = HeapConditions {heapType, n}
 	for i:= n/2; i>=0; i-- {
-		maxHeapify(array, i, n)
+		heapify(&array, i)
 	}
-}
-
-func main() {
-	array := []int {0, 1,4, 2 ,3, 5, 6, 7, 8, 9}
-	createBinaryHeap(&array, 10)
-	fmt.Println(array)
+	return &array
 }
