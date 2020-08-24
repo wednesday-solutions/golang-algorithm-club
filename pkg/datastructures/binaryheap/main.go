@@ -1,51 +1,55 @@
 package BinaryHeap
 
-type HeapConditions struct {
-	heapType string
-	totalItems int
-}
+type( 
+	HeapType string
+	BinaryHeap struct {
+		data *[]int
+		totalItems int
+		heapType HeapType
+	}
+	BinaryHeapMethods interface {
+		CreateBinaryHeap()
+		ChildCheck(int, int) bool
+		Heapify(int)
+	}
+)
 
-var CreateHeap HeapConditions
-
-func swap(aIndex int, bIndex int, array *[]int) {
+func Swap(aIndex int, bIndex int, array *[]int) {
 	temp := (*array)[aIndex]
 	(*array)[aIndex] = (*array)[bIndex]
 	(*array)[bIndex] = temp
 }
 
-func childCheck(index int, largestItemIndex int, array * []int) bool{
-	if index < CreateHeap.totalItems {
-		if CreateHeap.heapType == "MAX" {
-			return (*array)[largestItemIndex] < (*array)[index]
-		} else if CreateHeap.heapType == "MIN" {
-			return (*array)[largestItemIndex] > (*array)[index]
+func (heap *BinaryHeap) ChildCheck(index int, largestItemIndex int) bool{
+	if index < heap.totalItems {
+		if heap.heapType == "MAX" {
+			return (*heap.data)[largestItemIndex] < (*heap.data)[index]
+		} else if heap.heapType == "MIN" {
+			return (*heap.data)[largestItemIndex] > (*heap.data)[index]
 		}
 	}
 	return false
 }
 
-func heapify(array *[]int, nodeIndex int) {
+func (heap *BinaryHeap)Heapify(nodeIndex int) {
 	leftChildIndex := 2*nodeIndex + 1
 	rightChildIndex := 2*nodeIndex + 2
 	largest := nodeIndex
-
-	if childCheck(leftChildIndex, largest, array) {
+	if heap.ChildCheck(leftChildIndex, largest) {
 		largest = leftChildIndex
 	}
-	if childCheck(rightChildIndex, largest, array) {
+	if heap.ChildCheck(rightChildIndex, largest) {
 		largest = rightChildIndex
 	}
 
 	if largest != nodeIndex {
-		swap (largest, nodeIndex, array)
-		heapify(array, largest)
+		Swap(largest, nodeIndex, heap.data)
+		heap.Heapify(largest)
 	}
 }
 
-func createBinaryHeap(array []int, n int, heapType string) *[]int {
-	CreateHeap = HeapConditions {heapType, n}
-	for i:= n/2; i>=0; i-- {
-		heapify(&array, i)
+func (heap *BinaryHeap) CreateBinaryHeap() {
+	for i:= heap.totalItems/2; i>=0; i-- {
+		heap.Heapify(i)
 	}
-	return &array
 }
