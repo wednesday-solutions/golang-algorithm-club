@@ -10,8 +10,6 @@ func TestMain(m *testing.M) {
 	utl.SetupTests(m, InitBinaryHeap)
 }
 
-var MAX = HeapType("MAX")
-var MIN = HeapType("MIN")
 var minData = []int {0, 1, 4, 2 ,3, 5, 6, 7, 8, 9}
 var maxData = []int {0, 1, 4, 2 ,3, 5, 6, 7, 8, 9}
 var maxHeap BinaryHeapMethods = &BinaryHeap {&maxData, 10, MAX}

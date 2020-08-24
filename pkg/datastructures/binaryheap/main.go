@@ -13,6 +13,8 @@ type(
 		Heapify(int)
 	}
 )
+var MIN = HeapType("MIN")
+var MAX = HeapType("MAX")
 
 func Swap(aIndex int, bIndex int, array *[]int) {
 	temp := (*array)[aIndex]
@@ -22,9 +24,9 @@ func Swap(aIndex int, bIndex int, array *[]int) {
 
 func (heap *BinaryHeap) ChildCheck(index int, largestItemIndex int) bool{
 	if index < heap.totalItems {
-		if heap.heapType == "MAX" {
+		if heap.heapType == MAX {
 			return (*heap.data)[largestItemIndex] < (*heap.data)[index]
-		} else if heap.heapType == "MIN" {
+		} else if heap.heapType == MIN {
 			return (*heap.data)[largestItemIndex] > (*heap.data)[index]
 		}
 	}
