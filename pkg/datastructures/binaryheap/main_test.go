@@ -22,6 +22,7 @@ var expectedMaxBinaryHeapResult = []int {9, 8, 6, 7, 3, 5, 4, 0, 2, 1}
 
 func InitBinaryHeap() {
 	maxHeap.CreateBinaryHeap()
+	minHeap.CreateBinaryHeap()
 }
 
 func TestCreateMaxBinaryHeap(t *testing.T) {
@@ -32,6 +33,6 @@ func TestCreateMaxBinaryHeap(t *testing.T) {
 
 func TestCreateMinBinaryHeap(t *testing.T) {
 	if !reflect.DeepEqual(minData, expectedMinBinaryHeapResult) {
-		t.Errorf("The MaxBinaryHeap should be %v", expectedMaxBinaryHeapResult)
+		t.Errorf("The MaxBinaryHeap should be %v", expectedMinBinaryHeapResult)
 	}
 }
