@@ -14,9 +14,6 @@ var minData = []int {0, 1, 4, 2 ,3, 5, 6, 7, 8, 9}
 var maxData = []int {0, 1, 4, 2 ,3, 5, 6, 7, 8, 9}
 var maxHeap BinaryHeapMethods = &BinaryHeap {&maxData, 10, MAX}
 var minHeap BinaryHeapMethods = &BinaryHeap {&minData, 10, MIN}
-
-var minBinaryHeapResult *[]int
-var maxBinaryHeapResult *[]int
 var expectedMinBinaryHeapResult = []int {0, 1, 4, 2, 3, 5, 6, 7, 8, 9}
 var expectedMaxBinaryHeapResult = []int {9, 8, 6, 7, 3, 5, 4, 0, 2, 1}
 
