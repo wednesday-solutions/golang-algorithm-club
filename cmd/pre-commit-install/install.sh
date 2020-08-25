@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
 
-echo "Installing pre-commit dependencies"
+echo "--Installing pre-commit dependencies---"
 
 go get github.com/fzipp/gocyclo
 go get golang.org/x/tools/cmd/goimports
 GO111MODULE=on go get -v -u github.com/go-critic/go-critic/cmd/gocritic
 go get -u golang.org/x/lint/golint
 
+gofmt -d ../../
+go vet ../../
+golint ../../
+goimports --over=15 ../../
+go mod tidy
+git add .
+
 if [ "$?" = "0" ]; then
-    echo "Dependencies Installed."
+    echo "---Dependencies Installed---"
 else 
-    echo "Installation Failed."
+    echo "---Installation Failed---"
     exit 1
 fi

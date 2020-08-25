@@ -30,3 +30,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Test
         run: go test ./...
+      -name: Lint
+        run: |
+          chmod a+x cmd/pre-commit-install/install.sh
+          ./cmd/pre-commit-install/install.sh

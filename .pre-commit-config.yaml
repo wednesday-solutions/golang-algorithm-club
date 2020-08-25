@@ -1,8 +1,14 @@
 fail_fast: true
 repos:
+  - repo: local
+    hooks:
+      - id: install-dependencies
+        name: Install Dependencies
+        entry: cmd/pre-commit-install/install.sh
+        verbose: true
+        language: script
   - repo: git://github.com/dnephin/pre-commit-golang
     rev: master
-    entry: '/cmd/pre-commit-install/install.sh'
     hooks:
       - id: go-fmt
       - id: go-vet
@@ -12,6 +18,5 @@ repos:
       - id: validate-toml
       - id: no-go-testing
       - id: golangci-lint
-      - id: go-mod-tidy
-      - id: go-build
-
+      - id: go-build 
+ 
