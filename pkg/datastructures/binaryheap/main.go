@@ -9,8 +9,8 @@ type (
 		totalItems int
 		heapType   HeapType
 	}
-	// Methods Interface for BinaryHeap type.
-	Methods interface {
+	// BinaryHeaper Interface for BinaryHeap type.
+	BinaryHeaper interface {
 		CreateBinaryHeap()
 		ChildCheck(int, int) bool
 		Heapify(int)

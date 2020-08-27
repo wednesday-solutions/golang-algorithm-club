@@ -1,17 +1,16 @@
 fail_fast: true
 repos:
-  - repo: local
-    hooks:
-      - id: install-dependencies
-        name: Install Dependencies
-        entry: cmd/install-lint-dependencies/install.sh
-        verbose: true
-        language: script
   - repo: git://github.com/dnephin/pre-commit-golang
     rev: master
     hooks:
+      - id: go-fmt	
+      - id: go-vet	
+      - id: go-lint	
+      - id: go-imports	
+        args: [-over=15]
       - id: validate-toml
       - id: no-go-testing
       - id: golangci-lint
+      - id: go-mod-tidy
       - id: go-build 
  
