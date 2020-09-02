@@ -20,8 +20,8 @@ jobs:
     steps:
       - name: Install pre-commit dependencies
         run: |
-          chmod a+x cmd/pre-commit-install/install.sh
-          ./cmd/pre-commit-install/install.sh 
+          chmod a+x cmd/pre-commit-install.sh
+          ./cmd/pre-commit-install.sh 
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: pre-commit/action@v2.0.0
