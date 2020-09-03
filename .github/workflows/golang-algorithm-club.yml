@@ -15,6 +15,19 @@ jobs:
         uses: golangci/golangci-lint-action@v1
         with:
           version: v1.30
+  pre-commit:
+    name: pre-commit action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install pre-commit dependencies
+        run: |
+          GO111MODULE=off go get github.com/fzipp/gocyclo
+          GO111MODULE=off go get golang.org/x/tools/cmd/goimports
+          GO111MODULE=off go get -v -u github.com/go-critic/go-critic/cmd/gocritic
+          GO111MODULE=off go get -u golang.org/x/lint/golint
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: pre-commit/action@v2.0.0
   test:
     strategy:
       matrix:
