@@ -25,9 +25,7 @@ var MAX = HeapType("MAX")
 
 // Swap two items in the array
 func Swap(aIndex int, bIndex int, array *[]int) {
-	temp := (*array)[aIndex]
-	(*array)[aIndex] = (*array)[bIndex]
-	(*array)[bIndex] = temp
+	(*array)[aIndex], (*array)[bIndex] = (*array)[bIndex], (*array)[aIndex]
 }
 
 // ChildCheck check if a child node is larger or smaller than the item at the index provided
