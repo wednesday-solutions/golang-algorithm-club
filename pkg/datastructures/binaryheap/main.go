@@ -1,7 +1,7 @@
 package binaryheap
 
 type (
-	// HeapType Set the binary heapy type
+	// HeapType Set the binary heap type
 	HeapType string
 	// BinaryHeap provide the data array pointer, totalItems and the heap type.
 	BinaryHeap struct {
