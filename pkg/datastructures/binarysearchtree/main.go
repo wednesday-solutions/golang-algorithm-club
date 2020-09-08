@@ -8,7 +8,7 @@ type (
 		Insert(data)
 		Search(int) (string, error)
 	}
-	// BinaryNode is a struct
+	// BinaryNode a Binary node with data, and left and right child binary node pointers
 	BinaryNode struct {
 		data
 		leftChild  *BinaryNode
@@ -20,7 +20,7 @@ type (
 	}
 )
 
-// Search in the binary tree for a name with the key
+// Search for a name in the Binary tree
 func (node *BinaryNode) Search(searchKey int) (name string, err error) {
 	err = nil
 	name = ""
