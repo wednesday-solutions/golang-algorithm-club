@@ -44,29 +44,26 @@ func (node *BinaryNode) Search(key int) (name string,err  error) {
 	return
 }
 // Insert data into a node according to key
-func (node *BinaryNode) Insert(d data) {
+func (node *BinaryNode) Insert(input data) {
 	switch {
 		case node == nil || node.data.name == "":
 			// node is empty
-			node.data = d
-			break
-		case node.data.key > d.key:
+			node.data = input
+		case node.data.key > input.key:
 			// key less than node, save data in the left branch
 			if node.leftChild == nil {
 				// empty left child
-				node.leftChild = &BinaryNode{d, nil, nil}
+				node.leftChild = &BinaryNode{input, nil, nil}
 				} else {
-				node.leftChild.Insert(d)
+				node.leftChild.Insert(input)
 			}
-			break
-		case node.data.key < d.key:
+		case node.data.key < input.key:
 			// key greater than node key, save data in the right branch
 			if node.rightChild == nil {
 				// empty left child
-				node.rightChild = &BinaryNode{d, nil, nil}
+				node.rightChild = &BinaryNode{input, nil, nil}
 			} else {
-				node.rightChild.Insert(d)
+				node.rightChild.Insert(input)
 			}
-			break
 	}
 }
