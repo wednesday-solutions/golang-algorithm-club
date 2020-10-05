@@ -39,10 +39,6 @@ func GetValueFromBucket(key string) string {
 	return item.value
 }
 
-func getItem(item *item) *item {
-	return item.next
-}
-
 // Insert a key value pair into the table
 func Insert(key string, value string) {
 	indexToInsert:= hash(key)
@@ -52,9 +48,6 @@ func Insert(key string, value string) {
 		newBucket := bucket {&newItem, 1}
 		table[indexToInsert] = &newBucket
 	} else  {
-		for i:= table[indexToInsert].length; i >= 0; i-- {
-			getItem(table[indexToInsert].node)
-		}
 		// add next linked item to the bucket
 		table[indexToInsert].node.next = &newItem
 		table[indexToInsert].length++
