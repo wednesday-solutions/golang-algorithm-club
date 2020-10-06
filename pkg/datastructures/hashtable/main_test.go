@@ -17,19 +17,20 @@ func insertKeys() {
 }
 
 func TestGetValueFromBucket(t *testing.T) {
-	golangValue:= GetValueFromBucket("GOLANG")
+	// tests for GetValueFromBucket
+	golangValue := GetValueFromBucket("GOLANG")
 	if golangValue != "001" {
 		t.Errorf("Value for GOLANG should be 001, got value = %v", golangValue)
 	}
-	langgoValue:= GetValueFromBucket("LANGGO")
+	langgoValue := GetValueFromBucket("LANGGO")
 	if langgoValue != "100" {
 		t.Errorf("Value for GOLANG should be 100, got value = %v", langgoValue)
 	}
-	goValue:= GetValueFromBucket("GO")
+	goValue := GetValueFromBucket("GO")
 	if goValue != "002" {
 		t.Errorf("Value for GOLANG should be 002, got value = %v", goValue)
 	}
-	hashValue:= GetValueFromBucket("HASH")
+	hashValue := GetValueFromBucket("HASH")
 	if hashValue != "003" {
 		t.Errorf("Value for GOLANG should be 003, got value = %v", hashValue)
 	}
