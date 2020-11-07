@@ -17,10 +17,10 @@ var table = make([]*bucket, 100)
 // hash function, adds up the rune values of the characters in the key
 func hash(key string) int {
 	sum := 0
-	for _, v := range key {
-		sum += int(v)
+	for i, v := range key {
+		sum += int(v) + i
 	}
-	sum %= 100
+	sum %= 97
 	return sum
 }
 
