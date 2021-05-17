@@ -1,14 +1,20 @@
 package queue
 
 import (
-	"github.com/wednesday-solutions/golang-algorithm-club/pkg/utl"
+	"fmt"
 	"testing"
+
+	"github.com/wednesday-solutions/golang-algorithm-club/pkg/utl"
 )
 
 var queue Queue
 
 func createQueue() {
-	queue = NewQueueFromArray([]string{"1", "2", "3", "4"})
+	queueInput := make([]interface{}, 5)
+	for i := range queueInput {
+		queueInput[i] = fmt.Sprint(i + 1)
+	}
+	queue = NewQueueFromArray(queueInput)
 }
 
 func TestMain(m *testing.M) {
@@ -23,7 +29,11 @@ func TestNewQueue(t *testing.T) {
 }
 
 func TestNewQueueFromArray(t *testing.T) {
-	queue := NewQueueFromArray([]string{"1"})
+	queueInput := make([]interface{}, 1)
+	for i := range queueInput {
+		queueInput[i] = fmt.Sprint(i + 1)
+	}
+	queue = NewQueueFromArray(queueInput)
 	if len(queue) != 1 {
 		t.Errorf("length of the new queue should be 1")
 	}
@@ -60,7 +70,10 @@ func TestQueue_Enqueue(t *testing.T) {
 func TestQueue_Peek(t *testing.T) {
 	firstElement := "1"
 	secondElement := "2"
-	queue := NewQueueFromArray([]string{firstElement, secondElement})
+	queueInput := make([]interface{}, 2)
+	queueInput[0] = firstElement
+	queueInput[1] = secondElement
+	queue = NewQueueFromArray(queueInput)
 	previousLength := len(queue)
 	peekedElement := queue.Peek()
 	if peekedElement != firstElement {

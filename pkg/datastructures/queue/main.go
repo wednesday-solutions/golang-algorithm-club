@@ -2,12 +2,13 @@ package queue
 
 type (
 	//Queue queue data type
-	Queue []string
+	Queue []interface{}
+
 	//Impl Queue Interface
 	Impl interface {
-		Enqueue(string) string
-		Dequeue() string
-		Peek() string
+		Enqueue(interface{}) interface{}
+		Dequeue() interface{}
+		Peek() interface{}
 	}
 )
 
@@ -17,30 +18,29 @@ func NewQueue() Queue {
 }
 
 //NewQueueFromArray create a new queue from an array
-func NewQueueFromArray(arr []string) Queue {
+func NewQueueFromArray(arr []interface{}) Queue {
 	return arr
 }
 
 //Dequeue remove an element from the front of the queue
-func (queue *Queue) Dequeue() string {
+func (queue *Queue) Dequeue() interface{} {
 	if len(*queue) > 0 {
 		index := 0
 		element := (*queue)[index]
-		*queue = (*queue)[index:]
+		*queue = (*queue)[1:]
 		return element
 	}
 	return ""
-
 }
 
 //Enqueue add an element to the back of the queue
-func (queue *Queue) Enqueue(value string) string {
+func (queue *Queue) Enqueue(value interface{}) interface{} {
 	*queue = append(*queue, value)
 	return value
 }
 
 //Peek view the element at the front of the queue
-func (queue Queue) Peek() string {
+func (queue Queue) Peek() interface{} {
 	if len(queue) > 0 {
 		return queue[0]
 	}
